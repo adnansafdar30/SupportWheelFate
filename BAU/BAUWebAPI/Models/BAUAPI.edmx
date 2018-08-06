@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbBAUModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Total_No_Shift" Type="int" Nullable="false" />
+          <Property Name="Last_Shift" Type="date" Nullable="false" />
+          <Property Name="Lock" Type="bit" />
+        </EntityType>
+        <EntityType Name="Rotations">
+          <Key>
+            <PropertyRef Name="Rotation_ID" />
+          </Key>
+          <Property Name="Rotation_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Start_Date" Type="date" />
+          <Property Name="End_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Shifts">
+          <Key>
+            <PropertyRef Name="Day_ID" />
+          </Key>
+          <Property Name="Day_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Morning_Shift" Type="int" />
+          <Property Name="Evening_Shift" Type="int" />
+          <Property Name="Shift_Date" Type="date" />
+        </EntityType>
+        <Association Name="FK__Shifts__Evening___37A5467C">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="Evening_Shift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shifts__Morning___36B12243">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="Morning_Shift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbBAUModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rotations" EntityType="Self.Rotations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shifts" EntityType="Self.Shifts" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Shifts__Evening___37A5467C" Association="Self.FK__Shifts__Evening___37A5467C">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shifts__Morning___36B12243" Association="Self.FK__Shifts__Morning___36B12243">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbBAUModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Total_No_Shift" Type="Int32" Nullable="false" />
+          <Property Name="Last_Shift" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Lock" Type="Boolean" />
+          <NavigationProperty Name="Shifts" Relationship="Self.FK__Shifts__Evening___37A5467C" FromRole="Employee" ToRole="Shifts" />
+          <NavigationProperty Name="Shifts1" Relationship="Self.FK__Shifts__Morning___36B12243" FromRole="Employee" ToRole="Shifts" />
+        </EntityType>
+        <EntityType Name="Rotation">
+          <Key>
+            <PropertyRef Name="Rotation_ID" />
+          </Key>
+          <Property Name="Rotation_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Start_Date" Type="DateTime" Precision="0" />
+          <Property Name="End_Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="Day_ID" />
+          </Key>
+          <Property Name="Day_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Morning_Shift" Type="Int32" />
+          <Property Name="Evening_Shift" Type="Int32" />
+          <Property Name="Shift_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Shifts__Evening___37A5467C" FromRole="Shifts" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="Self.FK__Shifts__Morning___36B12243" FromRole="Shifts" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK__Shifts__Evening___37A5467C">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Shifts" Type="Self.Shift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="Evening_Shift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shifts__Morning___36B12243">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Shifts" Type="Self.Shift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="Morning_Shift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbBAUEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Rotations" EntityType="Self.Rotation" />
+          <EntitySet Name="Shifts" EntityType="Self.Shift" />
+          <AssociationSet Name="FK__Shifts__Evening___37A5467C" Association="Self.FK__Shifts__Evening___37A5467C">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shifts__Morning___36B12243" Association="Self.FK__Shifts__Morning___36B12243">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbBAUModelStoreContainer" CdmEntityContainer="dbBAUEntities">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="dbBAUModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Total_No_Shift" ColumnName="Total_No_Shift" />
+                <ScalarProperty Name="Last_Shift" ColumnName="Last_Shift" />
+                <ScalarProperty Name="Lock" ColumnName="Lock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rotations">
+            <EntityTypeMapping TypeName="dbBAUModel.Rotation">
+              <MappingFragment StoreEntitySet="Rotations">
+                <ScalarProperty Name="Rotation_ID" ColumnName="Rotation_ID" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shifts">
+            <EntityTypeMapping TypeName="dbBAUModel.Shift">
+              <MappingFragment StoreEntitySet="Shifts">
+                <ScalarProperty Name="Day_ID" ColumnName="Day_ID" />
+                <ScalarProperty Name="Morning_Shift" ColumnName="Morning_Shift" />
+                <ScalarProperty Name="Evening_Shift" ColumnName="Evening_Shift" />
+                <ScalarProperty Name="Shift_Date" ColumnName="Shift_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
