@@ -18,7 +18,7 @@ namespace BAU.Models
         public int Day_ID { get; set; }
         [Display(Name = "Morning Shift")]
         public Nullable<int> Morning_Shift { get; set; }
-        [Display(Name = "Evening Shift)]
+        [Display(Name = "Evening Shift")]
         public Nullable<int> Evening_Shift { get; set; }
         [Display(Name = "Shift Date")]
         [DataType(DataType.Date)]
