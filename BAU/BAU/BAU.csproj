@@ -56,6 +56,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -157,6 +160,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ShiftsController.cs" />
+    <Compile Include="Controllers\WebAPIEmployeeController.cs" />
     <Compile Include="Models\BAU.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -188,6 +192,7 @@
     <Compile Include="Models\Shift.cs">
       <DependentUpon>BAU.tt</DependentUpon>
     </Compile>
+    <Compile Include="WebApiAccessClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\dbBAU.mdf" />
@@ -252,6 +257,7 @@
     <Content Include="Views\BAU\Index.cshtml" />
     <Content Include="Views\BAU\RotaionPeriod.cshtml" />
     <Content Include="Views\Shifts\Index.cshtml" />
+    <Content Include="Views\WebAPIEmployee\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
