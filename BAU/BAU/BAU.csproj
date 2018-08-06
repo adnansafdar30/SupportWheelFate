@@ -156,6 +156,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ShiftsController.cs" />
     <Compile Include="Models\BAU.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -250,6 +251,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\BAU\Index.cshtml" />
     <Content Include="Views\BAU\RotaionPeriod.cshtml" />
+    <Content Include="Views\Shifts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
