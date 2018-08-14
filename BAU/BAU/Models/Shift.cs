@@ -16,14 +16,11 @@ namespace BAU.Models
     public partial class Shift
     {
         public int Day_ID { get; set; }
-        [Display(Name = "Morning Shift")]
         public Nullable<int> Morning_Shift { get; set; }
-        [Display(Name = "Evening Shift")]
         public Nullable<int> Evening_Shift { get; set; }
-        [Display(Name = "Shift Date")]
         [DataType(DataType.Date)]
         public Nullable<System.DateTime> Shift_Date { get; set; }
-
+    
         public virtual Employee Employee { get; set; }
         public virtual Employee Employee1 { get; set; }
     }

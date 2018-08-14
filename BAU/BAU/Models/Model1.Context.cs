@@ -13,10 +13,10 @@ namespace BAU.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbBAUEntities : DbContext
+    public partial class BAUTestEntities : DbContext
     {
-        public dbBAUEntities()
-            : base("name=dbBAUEntities")
+        public BAUTestEntities()
+            : base("name=BAUTestEntities")
         {
         }
     

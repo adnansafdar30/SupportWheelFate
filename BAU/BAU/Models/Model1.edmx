@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbBAUModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BAUTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="Employee_ID" />
@@ -32,7 +32,7 @@
           <Property Name="Evening_Shift" Type="int" />
           <Property Name="Shift_Date" Type="date" />
         </EntityType>
-        <Association Name="FK__Shifts__Evening___37A5467C">
+        <Association Name="FK__Shifts__Evening___4E88ABD4">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -44,7 +44,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Shifts__Morning___36B12243">
+        <Association Name="FK__Shifts__Morning___4D94879B">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -56,15 +56,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dbBAUModelStoreContainer">
+        <EntityContainer Name="BAUTestModelStoreContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rotations" EntityType="Self.Rotations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shifts" EntityType="Self.Shifts" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Shifts__Evening___37A5467C" Association="Self.FK__Shifts__Evening___37A5467C">
+          <AssociationSet Name="FK__Shifts__Evening___4E88ABD4" Association="Self.FK__Shifts__Evening___4E88ABD4">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Shifts" EntitySet="Shifts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Shifts__Morning___36B12243" Association="Self.FK__Shifts__Morning___36B12243">
+          <AssociationSet Name="FK__Shifts__Morning___4D94879B" Association="Self.FK__Shifts__Morning___4D94879B">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Shifts" EntitySet="Shifts" />
           </AssociationSet>
@@ -73,7 +73,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="dbBAUModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="BAUTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="Employee_ID" />
@@ -83,8 +83,8 @@
           <Property Name="Total_No_Shift" Type="Int32" Nullable="false" />
           <Property Name="Last_Shift" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Lock" Type="Boolean" />
-          <NavigationProperty Name="Shifts" Relationship="Self.FK__Shifts__Evening___37A5467C" FromRole="Employee" ToRole="Shifts" />
-          <NavigationProperty Name="Shifts1" Relationship="Self.FK__Shifts__Morning___36B12243" FromRole="Employee" ToRole="Shifts" />
+          <NavigationProperty Name="Shifts" Relationship="Self.FK__Shifts__Evening___4E88ABD4" FromRole="Employee" ToRole="Shifts" />
+          <NavigationProperty Name="Shifts1" Relationship="Self.FK__Shifts__Morning___4D94879B" FromRole="Employee" ToRole="Shifts" />
         </EntityType>
         <EntityType Name="Rotation">
           <Key>
@@ -102,10 +102,10 @@
           <Property Name="Morning_Shift" Type="Int32" />
           <Property Name="Evening_Shift" Type="Int32" />
           <Property Name="Shift_Date" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__Shifts__Evening___37A5467C" FromRole="Shifts" ToRole="Employee" />
-          <NavigationProperty Name="Employee1" Relationship="Self.FK__Shifts__Morning___36B12243" FromRole="Shifts" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Shifts__Evening___4E88ABD4" FromRole="Shifts" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="Self.FK__Shifts__Morning___4D94879B" FromRole="Shifts" ToRole="Employee" />
         </EntityType>
-        <Association Name="FK__Shifts__Evening___37A5467C">
+        <Association Name="FK__Shifts__Evening___4E88ABD4">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Shifts" Type="Self.Shift" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,7 +117,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Shifts__Morning___36B12243">
+        <Association Name="FK__Shifts__Morning___4D94879B">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Shifts" Type="Self.Shift" Multiplicity="*" />
           <ReferentialConstraint>
@@ -129,15 +129,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dbBAUEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BAUTestEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Rotations" EntityType="Self.Rotation" />
           <EntitySet Name="Shifts" EntityType="Self.Shift" />
-          <AssociationSet Name="FK__Shifts__Evening___37A5467C" Association="Self.FK__Shifts__Evening___37A5467C">
+          <AssociationSet Name="FK__Shifts__Evening___4E88ABD4" Association="Self.FK__Shifts__Evening___4E88ABD4">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Shifts" EntitySet="Shifts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Shifts__Morning___36B12243" Association="Self.FK__Shifts__Morning___36B12243">
+          <AssociationSet Name="FK__Shifts__Morning___4D94879B" Association="Self.FK__Shifts__Morning___4D94879B">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Shifts" EntitySet="Shifts" />
           </AssociationSet>
@@ -147,9 +147,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dbBAUModelStoreContainer" CdmEntityContainer="dbBAUEntities">
+        <EntityContainerMapping StorageEntityContainer="BAUTestModelStoreContainer" CdmEntityContainer="BAUTestEntities">
           <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="dbBAUModel.Employee">
+            <EntityTypeMapping TypeName="BAUTestModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -160,7 +160,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rotations">
-            <EntityTypeMapping TypeName="dbBAUModel.Rotation">
+            <EntityTypeMapping TypeName="BAUTestModel.Rotation">
               <MappingFragment StoreEntitySet="Rotations">
                 <ScalarProperty Name="Rotation_ID" ColumnName="Rotation_ID" />
                 <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
@@ -169,7 +169,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Shifts">
-            <EntityTypeMapping TypeName="dbBAUModel.Shift">
+            <EntityTypeMapping TypeName="BAUTestModel.Shift">
               <MappingFragment StoreEntitySet="Shifts">
                 <ScalarProperty Name="Day_ID" ColumnName="Day_ID" />
                 <ScalarProperty Name="Morning_Shift" ColumnName="Morning_Shift" />

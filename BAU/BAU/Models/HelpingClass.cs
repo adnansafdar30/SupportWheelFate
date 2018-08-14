@@ -7,7 +7,8 @@ namespace BAU.Models
 {
     public class HelpingClass
     {
-        dbBAUEntities context = new dbBAUEntities();
+        //dbBAUEntities context = new dbBAUEntities();
+        BAUTestEntities context = new BAUTestEntities();
         List<Employee> employeearray = new List<Employee>();
 
         int random1 = 0;
@@ -85,8 +86,6 @@ namespace BAU.Models
             int result = context.SaveChanges();
             return result;
         }//reotation data metord finish 
-
-
         //***** ALL Shift Controller Methords ******//
         internal int getShifts()
         {
@@ -94,11 +93,14 @@ namespace BAU.Models
             DateTime date = getshiftDate();//get rotation start date
             if (date != null)
             {
+                getEmployeeList();//get employeearray who are avaialbe to work
+
                 do
                 {
                     if (date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday)
                     {
                         result = updatelockStatus(date);//check last day employee who worked
+                        employeearray = null;
                         getEmployeeList();//get employeearray who are avaialbe to work
                         getrandomValues(employeearray);//assinging values to random 1 and random 2
                         if (random1 != 0 && random2 != 0)
@@ -117,8 +119,8 @@ namespace BAU.Models
                     {
                         date = date.AddDays(1);
                     }
-                  
-                } while (employeearray.Count>2);
+
+                } while (employeearray.Count > 2);
             }
             return result;
         }

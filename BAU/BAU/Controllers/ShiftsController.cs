@@ -10,7 +10,9 @@ namespace BAU.Controllers
     public class ShiftsController : Controller
     {
         HelpingClass hlp = new HelpingClass();
-        dbBAUEntities context = new dbBAUEntities();
+        //dbBAUEntities context = new dbBAUEntities();
+        BAUTestEntities context = new BAUTestEntities();
+
         // GET: Shifts
         public ActionResult Index()
         {

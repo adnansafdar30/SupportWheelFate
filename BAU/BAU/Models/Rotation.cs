@@ -17,11 +17,9 @@ namespace BAU.Models
     {
         public int Rotation_ID { get; set; }
         [Required]
-        [Display(Name = "Start Rotation Date")]
         [DataType(DataType.Date)]
         public Nullable<System.DateTime> Start_Date { get; set; }
         [DataType(DataType.Date)]
-        [Display(Name = "End Rotation Date")]
         public Nullable<System.DateTime> End_Date { get; set; }
     }
 }

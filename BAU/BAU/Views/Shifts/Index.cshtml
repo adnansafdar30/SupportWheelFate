@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    This shos the list of employees who will get shifts and without saturday and sunday . 
+    This shos the list of employees who will get shifts and without saturday and sunday .
 </p>
 <table class="table">
     <tr>
@@ -19,24 +19,26 @@
             @Html.DisplayNameFor(model => model.Morning_Shift)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Evening_Shift )
+            @Html.DisplayNameFor(model => model.Evening_Shift)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Shift_Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Employee.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Employee1.Name)
-        </td>
-  
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shift_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee1.Name)
+            </td>
+
+        </tr>
+    }
 
 </table>
+<input type="button" class="btn btn-info" value="Add New Rotation Date" onclick="location.href='@Url.Action("Index", "BAU")'" />

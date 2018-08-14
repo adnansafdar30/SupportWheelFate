@@ -11,7 +11,9 @@ namespace BAU.Controllers
     {
         // GET: BAU
         HelpingClass hlp = new HelpingClass();//Helping class object
-        dbBAUEntities context = new dbBAUEntities();
+       // dbBAUEntities context = new dbBAUEntities();
+        BAUTestEntities context = new BAUTestEntities();
+
         [HttpGet]
         public ActionResult Index()
         {
